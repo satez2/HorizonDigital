@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Digital - Soluções Criativas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; /* Fundo claro para o corpo */
+        }
+        .page-content {
+            min-height: calc(100vh - 128px); /* Altura mínima: 100vh - (altura do cabeçalho + altura do rodapé) */
+            padding-top: 64px; /* Espaço para o cabeçalho fixo */
+        }
+        .text-primary-color {
+            color: #1a73e8; /* Azul primário */
+        }
+        .bg-primary-color {
+            background-color: #1a73e8; /* Azul primário */
+        }
+        .btn-cta {
+            /* Uso do @apply para incluir classes Tailwind dentro de um seletor customizado */
+            @apply inline-block px-8 py-3 text-lg font-bold text-white bg-primary-color rounded-full shadow-lg transition duration-300 hover:bg-blue-700 hover:shadow-xl transform hover:-translate-y-0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Fixo (Passo 2) -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <!-- Logotipo da Empresa -->
+            <div class="flex-shrink-0">
+                <a href="#" onclick="App.navigate('home')" class="text-2xl font-extrabold text-primary-color tracking-wide">
+                    Horizon<span class="text-gray-800">Digital</span>
+                </a>
+            </div>
+
+            <!-- Navegação (Desktop) -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" onclick="App.navigate('home')" class="text-gray-600 hover:text-primary-color font-medium transition duration-150">Página Inicial</a>
+                <a href="#" onclick="App.navigate('about')" class="text-gray-600 hover:text-primary-color font-medium transition duration-150">Sobre</a>
+                <a href="#" onclick="App.navigate('portfolio')" class="text-gray-600 hover:text-primary-color font-medium transition duration-150">Portfólio</a>
+                <a href="#" onclick="App.navigate('services')" class="text-gray-600 hover:text-primary-color font-medium transition duration-150">Serviços</a>
+                <a href="#" onclick="App.navigate('contact')" class="text-gray-600 hover:text-primary-color font-medium transition duration-150">Contato</a>
+            </nav>
+
+            <!-- Botão de Menu (Mobile) - AGORA FUNCIONAL -->
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-primary-color focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Mobile - Conteúdo (Adicionado para funcionalidade) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg fixed top-16 w-full z-40 pb-4 border-t border-gray-200">
+        <nav class="flex flex-col space-y-2 px-4 pt-2">
+            <!-- Os links usam 'true' como segundo argumento para fechar o menu após o clique -->
+            <a href="#" onclick="App.navigate('home', true)" class="text-gray-600 hover:text-primary-color font-medium p-2 rounded-lg transition duration-150">Página Inicial</a>
+            <a href="#" onclick="App.navigate('about', true)" class="text-gray-600 hover:text-primary-color font-medium p-2 rounded-lg transition duration-150">Sobre</a>
+            <a href="#" onclick="App.navigate('portfolio', true)" class="text-gray-600 hover:text-primary-color font-medium p-2 rounded-lg transition duration-150">Portfólio</a>
+            <a href="#" onclick="App.navigate('services', true)" class="text-gray-600 hover:text-primary-color font-medium p-2 rounded-lg transition duration-150">Serviços</a>
+            <a href="#" onclick="App.navigate('contact', true)" class="text-gray-600 hover:text-primary-color font-medium p-2 rounded-lg transition duration-150">Contato</a>
+        </nav>
+    </div>
+    <!-- Fim do Menu Mobile -->
+
+    <!-- Conteúdo Principal Dinâmico -->
+    <main id="app-container">
+        <!-- O conteúdo da página será injetado/controlado pelo JavaScript -->
+    </main>
+
+    <!-- Rodapé (Passo 2) -->
+    <footer class="bg-gray-800 text-white mt-12 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Informações de Contato -->
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-primary-color">Contato</h4>
+                <p class="text-sm">Rua Criatividade, 101, Inovação - SP</p>
+                <p class="text-sm">contato@horizondigital.com.br</p>
+                <p class="text-sm">(11) 98765-4321</p>
+            </div>
+            <!-- Links Rápidos -->
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-primary-color">Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="App.navigate('about')" class="text-sm hover:text-primary-color transition duration-150">Sobre Nós</a></li>
+                    <li><a href="#" onclick="App.navigate('services')" class="text-sm hover:text-primary-color transition duration-150">Nossos Serviços</a></li>
+                    <li><a href="#" onclick="App.navigate('portfolio')" class="text-sm hover:text-primary-color transition duration-150">Portfólio</a></li>
+                </ul>
+            </div>
+            <!-- Redes Sociais (Ícones SVG) -->
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-primary-color">Siga-nos</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-primary-color transition duration-150" aria-label="Facebook">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14 19h-4V8h-2v11H4v2h16v-2h-2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    </a>
+                    <a href="#" class="hover:text-primary-color transition duration-150" aria-label="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.32 17.5c-1.12.3-2.31.45-3.64.45-1.34 0-2.53-.15-3.64-.45-1.11-.3-1.92-.73-2.48-1.28-.56-.55-.99-1.37-1.28-2.48-.3-1.12-.45-2.31-.45-3.64 0-1.34.15-2.53.45-3.64.3-1.11.73-1.92 1.28-2.48.55-.56 1.37-.99 2.48-1.28 1.12-.3 2.31-.45 3.64-.45 1.34 0 2.53.15 3.64.45 1.11.3 1.92.73 2.48 1.28.56.55.99 1.37 1.28 2.48.3 1.12.45 2.31.45 3.64 0 1.34-.15 2.53-.45 3.64-.3 1.11-.73 1.92-1.28 2.48-.55.56-1.37.99-2.48 1.28zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                    </a>
+                    <a href="#" class="hover:text-primary-color transition duration-150" aria-label="LinkedIn">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8 10H5V21h3V10zm5.5 0H11v11h2.5v-4.72c0-1.24.8-1.5 1.11-1.5.31 0 .69.26.69 1.5v4.72H18v-5.2c0-2.73-1.46-3.8-3.35-3.8-1.6 0-2.45.89-2.65 1.63V10zM6.5 6.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Newsletter (Exemplo) -->
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-primary-color">Fique Atualizado</h4>
+                <p class="text-sm mb-3">Receba nossas novidades.</p>
+                <input type="email" placeholder="Seu e-mail" class="w-full p-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-color mb-2">
+                <button class="w-full bg-primary-color text-white py-2 rounded font-semibold hover:bg-blue-700 transition duration-150">Assinar</button>
+            </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+            <p class="text-sm text-gray-400">&copy; 2025 Horizon Digital. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica de Gestão de Páginas (Simulando Vistas)
+        const App = {
+            currentPage: 'home',
+            container: document.getElementById('app-container'),
+            pages: {
+                // Passo 2: Página Inicial
+                'home': `
+                    <section class="page-content py-20 md:py-32 text-center bg-white">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <!-- Banner/Imagem de Destaque -->
+                            <div class="mb-16">
+                                <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                                    Impulsione Seu Negócio com <span class="text-primary-color">Soluções Digitais</span>
+                                </h1>
+                                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                                    Transformamos ideias em realidade digital. Especialistas em web, mobile e branding estratégico.
+                                </p>
+                                <a href="#" onclick="App.navigate('contact')" class="btn-cta">
+                                    Comece Seu Projeto Agora
+                                </a>
+                            </div>
+
+                            <!-- Seção de Competências e Diferenciais -->
+                            <div class="mt-20">
+                                <h2 class="text-3xl font-bold text-gray-800 mb-12">Nossas Principais Competências</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                                        <div class="text-5xl text-primary-color mb-4">💡</div>
+                                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Design Estratégico</h3>
+                                        <p class="text-gray-600">Criamos interfaces intuitivas e esteticamente agradáveis que convertem visitantes em clientes.</p>
+                                    </div>
+                                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                                        <div class="text-5xl text-primary-color mb-4">⚙️</div>
+                                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Desenvolvimento Sólido</h3>
+                                        <p class="text-gray-600">Utilizamos tecnologias modernas para construir plataformas rápidas, seguras e escaláveis.</p>
+                                    </div>
+                                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                                        <div class="text-5xl text-primary-color mb-4">📈</div>
+                                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Foco em Resultados</h3>
+                                        <p class="text-gray-600">Nosso trabalho é orientado por dados e focado em gerar crescimento real para o seu negócio.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                // Passo 3: Página Sobre
+                'about': `
+                    <section class="page-content py-16 md:py-24 bg-white">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 border-b pb-4 text-primary-color">Sobre a Horizon Digital</h1>
+
+                            <!-- História, Missão e Valores -->
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+                                <div class="col-span-1 lg:col-span-2">
+                                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Nossa Jornada</h2>
+                                    <p class="text-lg text-gray-600 mb-6">
+                                        Fundada em 2018 com a visão de desmistificar a tecnologia para pequenos e grandes negócios, a Horizon Digital cresceu rapidamente, tornando-se uma agência de referência. Acreditamos que o design e o código devem andar lado a lado para criar experiências digitais memoráveis.
+                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-primary-color mb-2">Missão</h3>
+                                            <p class="text-gray-600 text-sm">Empoderar empresas com ferramentas digitais inovadoras e eficazes.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-primary-color mb-2">Visão</h3>
+                                            <p class="text-gray-600 text-sm">Ser a agência líder em soluções digitais que transformam indústrias.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-primary-color mb-2">Valores</h3>
+                                            <p class="text-gray-600 text-sm">Inovação, Transparência, Colaboração e Excelência.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-1">
+                                    <img src="https://uploads-ssl.webflow.com/6629562be0ed689faf8b54b9/66848483b8baeb252d0aca00_DigitalHorizonLogoBG%2B2.png" class="w-full h-auto rounded-xl shadow-xl">
+                                </div>
+                            </div>
+
+                            <!-- Seção da Equipe -->
+                            <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Conheça Nossa Equipe</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                                    <img src="https://images.sympla.com.br/5f0dcae994bfe.jpeg" alt="Foto do CEO" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                                    <h4 class="text-xl font-bold text-gray-900">João Silva</h4>
+                                    <p class="text-primary-color font-medium mb-2">CEO & Estrategista</p>
+                                    <p class="text-sm text-gray-600">Lidera a visão da empresa e garante que cada projeto atinja seu máximo potencial.</p>
+                                </div>
+                                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                                    <img src="https://p2.trrsf.com/image/fget/cf/1200/630/middle/images.terra.com/2024/01/09/558908348-roridjmxknaunhygnl6mg2uo5m.jpg" alt="Foto do Designer Líder" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                                    <h4 class="text-xl font-bold text-gray-900">Mariana Souza</h4>
+                                    <p class="text-primary-color font-medium mb-2">Designer UX/UI</p>
+                                    <p class="text-sm text-gray-600">Apaixonada por criar experiências de usuário fluidas e designs que inspiram.</p>
+                                </div>
+                                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                                    <img src="https://www.opovo.com.br/_midias/jpg/2023/07/05/17-22518551.jpg" alt="Foto do Desenvolvedor Líder" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                                    <h4 class="text-xl font-bold text-gray-900">Pedro Costa</h4>
+                                    <p class="text-primary-color font-medium mb-2">Desenvolvedor Full Stack</p>
+                                    <p class="text-sm text-gray-600">Arquiteto de sistemas robustos, responsável pela qualidade e performance do código.</p>
+                                </div>
+                                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                                    <img src="https://www.ai-portraits.org/_next/static/media/5.35d4cf40.webp" alt="Foto do Especialista em Marketing" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                                    <h4 class="text-xl font-bold text-gray-900">Ana Ribeiro</h4>
+                                    <p class="text-primary-color font-medium mb-2">Marketing Digital</p>
+                                    <p class="text-sm text-gray-600">Especialista em SEO e estratégias de conteúdo para maximizar a visibilidade dos clientes.</p>
+                                </div>
+                            </div>
+
+                            <!-- CTA Final -->
+                            <div class="mt-20 text-center p-10 bg-primary-color/10 rounded-xl">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">Pronto para Começar?</h3>
+                                <p class="text-lg text-gray-600 mb-6">Entre em contato hoje e descubra como podemos transformar sua presença digital.</p>
+                                <a href="#" onclick="App.navigate('contact')" class="btn-cta bg-green-600 hover:bg-green-700">
+                                    Fale Conosco Agora
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                // Passo 4: Página Portfólio
+                'portfolio': `
+                    <section class="page-content py-16 md:py-24 bg-gray-50">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center text-primary-color">Nosso Portfólio de Sucesso</h1>
+                            <p class="text-xl text-gray-600 mb-12 text-center">Projetos que entregam resultados e superam expectativas.</p>
+
+                            <!-- Seção de Filtro -->
+                            <div class="flex flex-wrap justify-center space-x-2 sm:space-x-4 mb-12" id="portfolio-filters">
+                                <button data-filter="all" class="filter-btn bg-primary-color text-white px-5 py-2 rounded-full text-sm font-semibold transition duration-150 shadow-md">Todos</button>
+                                <button data-filter="web" class="filter-btn bg-white text-gray-600 hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-semibold transition duration-150 border">Web Design</button>
+                                <button data-filter="mobile" class="filter-btn bg-white text-gray-600 hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-semibold transition duration-150 border">Aplicativos Mobile</button>
+                                <button data-filter="branding" class="filter-btn bg-white text-gray-600 hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-semibold transition duration-150 border">Branding</button>
+                            </div>
+
+                            <!-- Grade de Projetos -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+
+                                <!-- Projeto 1: Web Design (Projeto Verde) -->
+                                <div class="portfolio-item group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition duration-300" data-category="web" onclick="alert('Detalhes do Projeto: E-commerce Verde - Design responsivo de alta conversão.')">
+                                    <img src="https://cdn.shopify.com/s/files/1/0691/1511/7868/files/34_-ECOMMERCE_DICAS_2025_1024x576_4836c360-6234-451b-8ce3-e3809297d7e7.png?v=1734359472" alt="Projeto E-commerce Verde" class="w-full h-48 object-cover transition duration-300 group-hover:scale-105">
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold text-gray-900">E-commerce Verde</h3>
+                                        <p class="text-primary-color font-medium">Web Design</p>
+                                    </div>
+                                </div>
+
+                                <!-- Projeto 2: Mobile -->
+                                <div class="portfolio-item group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition duration-300" data-category="mobile" onclick="alert('Detalhes do Projeto: App de Fitness - Aplicativo nativo com rastreamento de treino.')">
+                                    <img src="https://www.entrenamiento.com/wp-content/uploads/2019/10/aplicacion-fitness-720x406.jpg" alt="Projeto App de Fitness" class="w-full h-48 object-cover transition duration-300 group-hover:scale-105">
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold text-gray-900">App de Fitness</h3>
+                                        <p class="text-primary-color font-medium">Aplicativos Mobile</p>
+                                    </div>
+                                </div>
+
+                                <!-- Projeto 3: Branding -->
+                                <div class="portfolio-item group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition duration-300" data-category="branding" onclick="alert('Detalhes do Projeto: Rebranding Tech - Nova identidade visual e guia de marca.')">
+                                    <img src="https://img.freepik.com/vektoren-premium/branding-markenmarketing-und-management-symbol-in-der-wireframe-hand-branding-oder-rebranding-tech-konzept_127544-3160.jpg" alt="Projeto Rebranding Tech" class="w-full h-48 object-cover transition duration-300 group-hover:scale-105">
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold text-gray-900">Rebranding Tech</h3>
+                                        <p class="text-primary-color font-medium">Branding</p>
+                                    </div>
+                                </div>
+
+                                <!-- Projeto 4: Web Design (Projeto Azul) -->
+                                <div class="portfolio-item group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition duration-300" data-category="web" onclick="alert('Detalhes do Projeto: Landing Page SaaS - Design focado em captação de leads.')">
+                                    <img src="https://swipepages.com/blog/wp-content/uploads/2025/06/Saas-Landing-Page.png" alt="Projeto Landing Page SaaS" class="w-full h-48 object-cover transition duration-300 group-hover:scale-105">
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold text-gray-900">Landing Page SaaS</h3>
+                                        <p class="text-primary-color font-medium">Web Design</p>
+                                    </div>
+                                </div>
+
+                                <!-- Projeto 5: Mobile -->
+                                <div class="portfolio-item group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition duration-300" data-category="mobile" onclick="alert('Detalhes do Projeto: Jogo Casual - Desenvolvimento de game mobile 2D.')">
+                                    <img src="https://i0.wp.com/www.reviltec.com.br/wp-content/uploads/2023/04/new-casual-game-hero.jpg?fit=1200%2C600&ssl=1" alt="Projeto Jogo Casual Mobile" class="w-full h-48 object-cover transition duration-300 group-hover:scale-105">
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold text-gray-900">Jogo Casual Mobile</h3>
+                                        <p class="text-primary-color font-medium">Aplicativos Mobile</p>
+                                    </div>
+                                </div>
+
+                                <!-- Projeto 6: Branding -->
+                                <div class="portfolio-item group bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition duration-300" data-category="branding" onclick="alert('Detalhes do Projeto: Manual de Identidade - Criação completa de guia de marca para startup.')">
+                                    <img src="https://brandeame.es/wp-content/uploads/2017/03/manual-uso-marca-identidad-branding-LLLU-Brandeame.png" alt="Projeto Manual de Marca" class="w-full h-48 object-cover transition duration-300 group-hover:scale-105">
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold text-gray-900">Manual de Marca</h3>
+                                        <p class="text-primary-color font-medium">Branding</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                `,
+                // Passo 5: Página Serviços
+                'services': `
+                    <section class="page-content py-16 md:py-24 bg-white">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center text-primary-color">Nossos Serviços Especializados</h1>
+                            <p class="text-xl text-gray-600 mb-16 text-center">Soluções completas para levar sua ideia do conceito ao lançamento.</p>
+
+                            <!-- Lista de Serviços -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                                <!-- Serviço 1: Desenvolvimento Web Personalizado -->
+                                <div class="p-8 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-primary-color">
+                                    <div class="text-5xl text-primary-color mb-4">💻</div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Desenvolvimento Web</h3>
+                                    <p class="text-gray-600 mb-4">Criação de websites, e-commerces e plataformas web personalizadas com foco em performance e SEO.</p>
+                                    <div class="mb-4">
+                                        <span class="font-semibold text-gray-800">Benefícios:</span>
+                                        <ul class="list-disc list-inside text-sm text-gray-600 ml-2">
+                                            <li>Alta performance e velocidade de carregamento.</li>
+                                            <li>Design 100% responsivo e acessível.</li>
+                                            <li>Otimização para motores de busca (SEO).</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-sm font-semibold text-primary-color">Contratação: Agendamento de reunião de escopo.</p>
+                                </div>
+
+                                <!-- Serviço 2: Design UX/UI e Branding -->
+                                <div class="p-8 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-primary-color">
+                                    <div class="text-5xl text-primary-color mb-4">🎨</div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Design & Branding</h3>
+                                    <p class="text-gray-600 mb-4">Desenvolvimento de identidade visual, manuais de marca, e design de experiência (UX/UI) para produtos digitais.</p>
+                                    <div class="mb-4">
+                                        <span class="font-semibold text-gray-800">Benefícios:</span>
+                                        <ul class="list-disc list-inside text-sm text-gray-600 ml-2">
+                                            <li>Marca forte e consistente.</li>
+                                            <li>Aumento da satisfação e retenção do usuário.</li>
+                                            <li>Interfaces intuitivas e foco na usabilidade.</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-sm font-semibold text-primary-color">Contratação: Workshop inicial de descoberta de marca.</p>
+                                </div>
+
+                                <!-- Serviço 3: Aplicativos Mobile Nativos -->
+                                <div class="p-8 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-primary-color">
+                                    <div class="text-5xl text-primary-color mb-4">📱</div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Mobile Nativos</h3>
+                                    <p class="text-gray-600 mb-4">Construção de aplicativos iOS e Android com a melhor performance e recursos nativos.</p>
+                                    <div class="mb-4">
+                                        <span class="font-semibold text-gray-800">Benefícios:</span>
+                                        <ul class="list-disc list-inside text-sm text-gray-600 ml-2">
+                                            <li>Acesso a recursos nativos do dispositivo.</li>
+                                            <li>Melhor desempenho e fluidez.</li>
+                                            <li>Publicação assistida nas lojas de aplicativos.</li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-sm font-semibold text-primary-color">Contratação: Análise de viabilidade técnica (POC).</p>
+                                </div>
+
+                            </div>
+                            <!-- CTA -->
+                            <div class="mt-16 text-center">
+                                <a href="#" onclick="App.navigate('contact')" class="btn-cta">
+                                    Solicitar Orçamento Personalizado
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                // Passo 6: Página Contato
+                'contact': `
+                    <section class="page-content py-16 md:py-24 bg-gray-50">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center text-primary-color">Entre em Contato</h1>
+                            <p class="text-xl text-gray-600 mb-12 text-center">Estamos prontos para transformar sua ideia em realidade.</p>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                <!-- Formulário de Contato -->
+                                <div class="p-8 bg-white rounded-xl shadow-2xl">
+                                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Envie-nos uma Mensagem</h2>
+                                    <form id="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada! Entraremos em contato em breve.'); document.getElementById('contact-form').reset();">
+                                        <div class="mb-4">
+                                            <label for="name" class="block text-gray-700 font-semibold mb-2">Nome Completo</label>
+                                            <input type="text" id="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary-color focus:border-primary-color">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="email" class="block text-gray-700 font-semibold mb-2">E-mail</label>
+                                            <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary-color focus:border-primary-color">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="phone" class="block text-gray-700 font-semibold mb-2">Telefone (Opcional)</label>
+                                            <input type="tel" id="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary-color focus:border-primary-color">
+                                        </div>
+                                        <div class="mb-6">
+                                            <label for="message" class="block text-gray-700 font-semibold mb-2">Sua Mensagem / Detalhes do Projeto</label>
+                                            <textarea id="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary-color focus:border-primary-color"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn-cta w-full py-3">
+                                            Enviar Mensagem
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Informações Adicionais e Mapa -->
+                                <div class="space-y-10">
+                                    <!-- Informações Adicionais -->
+                                    <div class="p-8 bg-white rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Nossos Canais</h2>
+                                        <div class="space-y-4">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="text-primary-color text-2xl">📍</div>
+                                                <div>
+                                                    <p class="font-semibold text-gray-800">Endereço:</p>
+                                                    <p class="text-gray-600">Rua Criatividade, 101, Inovação - SP, Brasil</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <div class="text-primary-color text-2xl">📞</div>
+                                                <div>
+                                                    <p class="font-semibold text-gray-800">Telefone:</p>
+                                                    <p class="text-gray-600">(11) 98765-4321</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <div class="text-primary-color text-2xl">✉️</div>
+                                                <div>
+                                                    <p class="font-semibold text-gray-800">E-mail:</p>
+                                                    <p class="text-gray-600">contato@horizondigital.com.br</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Mapa Interativo (Placeholder) -->
+                                    <div class="p-8 bg-white rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Onde Estamos</h2>
+                                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                                            <p class="text-gray-500 font-semibold">Placeholder de Mapa Interativo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `,
+            },
+
+            init: function() {
+                this.navigate(this.currentPage);
+                this.setupFilters();
+                this.setupMobileMenu(); // Adiciona o listener para o botão do menu mobile
+            },
+            
+            setupMobileMenu: function() {
+                const toggleBtn = document.getElementById('menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+
+                // Verifica se os elementos existem antes de adicionar o listener
+                if (toggleBtn && mobileMenu) {
+                    toggleBtn.addEventListener('click', () => {
+                        // Alterna a classe 'hidden' para mostrar/esconder o menu
+                        mobileMenu.classList.toggle('hidden');
+                    });
+                }
+            },
+
+            navigate: function(pageName, closeMobile = false) {
+                // Atualiza o estado e renderiza a nova página
+                this.currentPage = pageName;
+                this.container.innerHTML = this.pages[pageName] || this.pages['home'];
+                // Rola para o topo da página
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.updateActiveLink(pageName);
+
+                if (pageName === 'portfolio') {
+                    this.setupFilters(); // Re-configura os filtros se for o portfólio
+                }
+                
+                // Fecha o menu mobile se a navegação veio de um clique de link mobile (closeMobile = true)
+                if (closeMobile) {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            },
+
+            updateActiveLink: function(pageName) {
+                // Remove a classe ativa de todos os links (tanto desktop quanto mobile)
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('text-primary-color', 'font-extrabold', 'border-b-2', 'border-primary-color');
+                    link.classList.add('text-gray-600', 'font-medium');
+                });
+
+                // Adiciona a classe ativa ao link correspondente
+                document.querySelectorAll('nav a').forEach(link => {
+                    // Verifica se o texto do link inclui o nome da página (tratando 'home' como 'inicial')
+                    if (link.textContent.toLowerCase().includes(pageName === 'home' ? 'inicial' : pageName.toLowerCase())) {
+                        link.classList.remove('text-gray-600', 'font-medium');
+                        link.classList.add('text-primary-color', 'font-extrabold', 'border-b-2', 'border-primary-color');
+                    }
+                });
+            },
+
+            // Lógica de Filtro para o Portfólio (Passo 4)
+            setupFilters: function() {
+                const filtersContainer = document.getElementById('portfolio-filters');
+                if (!filtersContainer) return;
+
+                const filterButtons = filtersContainer.querySelectorAll('.filter-btn');
+                const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+                filterButtons.forEach(button => {
+                    button.onclick = (e) => {
+                        const filter = e.target.dataset.filter;
+                        this.applyFilter(filter, filterButtons, portfolioItems);
+                    };
+                });
+                // Aplica o filtro inicial para garantir que o botão 'Todos' esteja ativo
+                this.applyFilter('all', filterButtons, portfolioItems);
+            },
+
+            applyFilter: function(filter, filterButtons, portfolioItems) {
+                // Atualiza o estilo dos botões de filtro
+                filterButtons.forEach(btn => {
+                    if (btn.dataset.filter === filter) {
+                        btn.classList.remove('bg-white', 'text-gray-600', 'border');
+                        btn.classList.add('bg-primary-color', 'text-white');
+                    } else {
+                        btn.classList.remove('bg-primary-color', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-600', 'border');
+                    }
+                });
+
+                // Filtra os itens do portfólio
+                portfolioItems.forEach(item => {
+                    const category = item.dataset.category;
+                    if (filter === 'all' || category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            }
+        };
+
+        // Inicializa o aplicativo ao carregar a página
+        window.onload = function() {
+            App.init();
+        };
+    </script>
+</body>
+</html>
